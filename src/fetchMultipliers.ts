@@ -79,7 +79,7 @@ function parseRows(tableHtml: string): MultipliersRow[] {
     const cells: string[] = []
     let match: RegExpExecArray | null
     while ((match = cellRegex.exec(tr)) !== null) {
-      const value = decodeEntities(stripTags(match[2])).replace(/\s+/g, " ").trim()
+      const value = decodeEntities(stripTags(match[2])).replaceAll(/\s+/g, " ").trim()
       cells.push(value)
     }
 
@@ -102,7 +102,7 @@ function parseRows(tableHtml: string): MultipliersRow[] {
 }
 
 function parseMultiplier(input: string): number | null {
-  const cleaned = input.replace(/\s+/g, " ").trim()
+  const cleaned = input.replaceAll(/\s+/g, " ").trim()
   const firstNumber = cleaned.match(/\d+(?:\.\d+)?/)
   if (!firstNumber) return null
   const value = Number.parseFloat(firstNumber[0])
@@ -111,15 +111,15 @@ function parseMultiplier(input: string): number | null {
 }
 
 function stripTags(input: string): string {
-  return input.replace(/<[^>]+>/g, " ")
+  return input.replaceAll(/<[^>]+>/g, " ")
 }
 
 function decodeEntities(input: string): string {
   return input
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
+    .replaceAll("&nbsp;", " ")
+    .replaceAll("&amp;", "&")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&#39;", "'")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">")
 }

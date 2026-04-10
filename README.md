@@ -1,6 +1,6 @@
 # OpenCode Copilot Multipliers Plugin
 
-Adds a `/multipliers` slash command to OpenCode that shows GitHub Copilot model multipliers.
+Adds a `/copilot-multipliers` slash command to OpenCode that shows GitHub Copilot model multipliers.
 
 ## Behavior
 
@@ -36,7 +36,7 @@ npm run build
 3. In OpenCode, run:
 
 ```text
-/multipliers
+/copilot-multipliers
 ```
 
 ## Options

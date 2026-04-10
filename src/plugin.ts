@@ -14,6 +14,7 @@ function showMarkdownDialog(api: TuiPluginApi, title: string, message: string): 
   )
 }
 
+// oxlint-disable-next-line require-await -- TuiPlugin requires Promise<void> return type
 const tui: TuiPlugin = async (api, options) => {
   const pluginOptions = (options ?? {}) as PluginOptions
 
@@ -23,7 +24,7 @@ const tui: TuiPlugin = async (api, options) => {
       value: `${PLUGIN_ID}.show`,
       description: "Show GitHub Copilot model multipliers (weekly cache)",
       category: "Copilot",
-      slash: { name: "multipliers" },
+      slash: { name: "copilot-multipliers" },
       onSelect: async () => {
         try {
           const workspaceDir = api.state.path.directory || process.cwd()

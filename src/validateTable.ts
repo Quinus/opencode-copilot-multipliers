@@ -4,16 +4,21 @@ function parseNumber(input: string): number {
   const normalized = input.trim().replace(/x$/i, "")
   const value = Number.parseFloat(normalized)
   if (Number.isNaN(value)) {
-    throw new Error(`Invalid multiplier value: ${input}`)
+    throw new TypeError(`Invalid multiplier value: ${input}`)
   }
   return value
 }
 
 export function renderMultipliersTable(rows: MultipliersRow[]): string {
-  const sorted = [...rows].sort((a, b) => a.multiplier - b.multiplier || a.model.localeCompare(b.model))
+  const sorted = [...rows].toSorted(
+    (a, b) => a.multiplier - b.multiplier || a.model.localeCompare(b.model),
+  )
   const modelWidth = Math.max("Model".length, ...sorted.map((row) => row.model.length))
   const multiplierStrings = sorted.map((row) => formatMultiplier(row.multiplier))
-  const multiplierWidth = Math.max("Multiplier".length, ...multiplierStrings.map((value) => value.length))
+  const multiplierWidth = Math.max(
+    "Multiplier".length,
+    ...multiplierStrings.map((value) => value.length),
+  )
 
   const header = `| ${"Model".padEnd(modelWidth)} | ${"Multiplier".padEnd(multiplierWidth)} |`
   const divider = `| ${"-".repeat(modelWidth)} | ${"-".repeat(multiplierWidth)} |`
@@ -25,6 +30,7 @@ export function renderMultipliersTable(rows: MultipliersRow[]): string {
   return [header, divider, ...body].join("\n")
 }
 
+// oxlint-disable-next-line max-lines-per-function -- table parsing logic is cohesive
 export function validateAndNormalizeMultipliersTable(markdown: string): string {
   const lines = markdown
     .split(/\r?\n/)
@@ -81,7 +87,9 @@ export function validateAndNormalizeMultipliersTable(markdown: string): string {
     seen.add(key)
   }
 
-  const sorted = [...parsedRows].sort((a, b) => a.multiplier - b.multiplier || a.model.localeCompare(b.model))
+  const sorted = [...parsedRows].toSorted(
+    (a, b) => a.multiplier - b.multiplier || a.model.localeCompare(b.model),
+  )
   return renderMultipliersTable(sorted)
 }
 

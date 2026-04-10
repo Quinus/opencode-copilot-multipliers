@@ -2,12 +2,7 @@ import { createHash } from "node:crypto"
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises"
 import { dirname, join } from "node:path"
 
-import {
-  CACHE_TTL_MS,
-  MultipliersMeta,
-  SCHEMA_VERSION,
-  SOURCE_URL,
-} from "./types.js"
+import { CACHE_TTL_MS, MultipliersMeta, SCHEMA_VERSION, SOURCE_URL } from "./types.js"
 
 export interface CachePaths {
   tablePath: string
