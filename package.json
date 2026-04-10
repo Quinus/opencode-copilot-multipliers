@@ -1,18 +1,44 @@
 {
   "name": "opencode-copilot-multipliers",
   "version": "0.1.0",
-  "private": true,
   "description": "OpenCode plugin that caches GitHub Copilot model multipliers weekly.",
   "type": "module",
   "main": "dist/plugin.js",
   "types": "dist/plugin.d.ts",
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "opencode",
+    "copilot",
+    "github",
+    "plugin",
+    "multipliers",
+    "pricing"
+  ],
+  "author": "Quinten Schelfhout",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quinus/opencode-copilot-multipliers"
+  },
+  "bugs": {
+    "url": "https://github.com/quinus/opencode-copilot-multipliers/issues"
+  },
+  "homepage": "https://github.com/quinus/opencode-copilot-multipliers#readme",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "check": "tsc -p tsconfig.json --noEmit",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
-    "format:check": "oxfmt --check"
+    "format:check": "oxfmt --check",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@opencode-ai/plugin": "latest",
