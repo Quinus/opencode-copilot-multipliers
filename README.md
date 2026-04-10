@@ -61,10 +61,10 @@ This displays a dialog showing the current GitHub Copilot model multipliers.
 
 ## Configuration Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `cacheDir` | string | `.opencode/cache/` | Custom cache directory path |
-| `forceRefresh` | boolean | `false` | Bypass weekly cache and fetch fresh data |
+| Option         | Type    | Default            | Description                              |
+| -------------- | ------- | ------------------ | ---------------------------------------- |
+| `cacheDir`     | string  | `.opencode/cache/` | Custom cache directory path              |
+| `forceRefresh` | boolean | `false`            | Bypass weekly cache and fetch fresh data |
 
 ## Cache Files
 
